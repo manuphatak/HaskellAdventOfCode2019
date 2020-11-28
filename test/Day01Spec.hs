@@ -4,7 +4,7 @@ import Day01.Day01
 import Test.Hspec
 
 spec :: SpecWith ()
-spec = describe "Day 01" $ do
+spec = do
   describe "Part 1" $ do
     it "does" $ do
-      part1 "hello" `shouldBe` "wor"
+      part1 "hello" `shouldBe` "hello"

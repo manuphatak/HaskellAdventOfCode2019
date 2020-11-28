@@ -40,8 +40,7 @@ packages:
 #   commit: e7b331f14bcffb8367cd58fbfc8b40ec7642100a
 #
 extra-deps:
-  - git: https://github.com/Avi-D-coder/implicit-hie
-    commit: 6b67252006e5ca21f66faca0b6b566246d17f4bf
+- implicit-hie-0.1.2.4
 
 # Override default flag values for local packages and extra-deps
 # flags: {}

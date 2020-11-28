@@ -4,4 +4,4 @@ part1 :: String -> String
 part1 string = string
 
 part2 :: String -> String
-part2 string = "Hello" ++ string
+part2 string = "Hello World" ++ string

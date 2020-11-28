@@ -37,3 +37,7 @@ tests:
     - AdventOfCode
     - hspec-discover
     - hspec
+
+build-tools:
+ - implicit-hie
+ - hpc-lcov

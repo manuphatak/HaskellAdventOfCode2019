@@ -5,16 +5,12 @@
 
 packages:
 - completed:
-    name: implicit-hie
-    version: 0.1.2.4
-    git: https://github.com/Avi-D-coder/implicit-hie
+    hackage: implicit-hie-0.1.2.4@sha256:963fcc1b1136ccfd814bc7182bcb841cc51db18b38f5d45860195aed0ca94ab6,2998
     pantry-tree:
-      size: 1287
-      sha256: a6ee928fad0a3e13813357b65a567c7f192486f7eb7583ac5533321dc1b0d1cc
-    commit: 6b67252006e5ca21f66faca0b6b566246d17f4bf
+      size: 844
+      sha256: 25ca5d85e30d0a5a7a1f34420848ab163221b53198dbf2e54090f5ae9050d5b1
   original:
-    git: https://github.com/Avi-D-coder/implicit-hie
-    commit: 6b67252006e5ca21f66faca0b6b566246d17f4bf
+    hackage: implicit-hie-0.1.2.4
 snapshots:
 - completed:
     size: 532832

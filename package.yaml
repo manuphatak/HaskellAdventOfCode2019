@@ -1,6 +1,6 @@
 name:                AdventOfCode
 version:             0.1.0.0
-github:              "bionikspoon/AdventOfCode"
+github:              "bionikspoon/HaskellAdventOfCode2019"
 license:             BSD3
 author:              "Manu Phatak"
 maintainer:          "bionikspoon@gmail.com"
@@ -17,7 +17,7 @@ extra-source-files:
 # To avoid duplicated efforts in documentation and dealing with the
 # complications of embedding Haddock markup inside cabal files, it is
 # common to point users to the README.md file.
-description:         Please see the README on GitHub at <https://github.com/bionikspoon/AdventOfCode#readme>
+description:         Please see the README on GitHub at <https://github.com/bionikspoon/HaskellAdventOfCode2019#readme>
 
 dependencies:
 - base >= 4.7 && < 5

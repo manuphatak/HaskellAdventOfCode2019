@@ -6,6 +6,7 @@ jobs:
         auth:
           username: bionikspoon
           password: $DOCKERHUB_PASSWORD
+    working_directory: /app
     steps:
       - checkout
       - restore_cache:
@@ -14,20 +15,20 @@ jobs:
             - v1-{{ checksum "stack.yaml" }}-{{ checksum "package.yaml" }}
             - v1-{{ checksum "stack.yaml" }}
       - run:
-          name: Remove any cached coverage data
-          command: rm -rfv $(stack --no-terminal path --local-hpc-root)
-      - run:
           name: Resolve dependencies
           command: stack --no-terminal setup
       - run:
           name: Install executable
           command: stack --no-terminal install
       - run:
+          name: Clean any cached coverage data
+          command: rm -rfv $(stack --no-terminal path --local-hpc-root)
+      - run:
           name: Run tests
           command: stack --no-terminal test --coverage
       - run:
           name: Generate lcov
-          command: stack --no-terminal hpc-lcov
+          command: stack --no-terminal exec hpc-lcov
       - run:
           name: Publish coverage
           command: bash <(curl -s https://codecov.io/bash)

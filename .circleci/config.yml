@@ -18,10 +18,7 @@ jobs:
           command: stack --no-terminal setup
       - run:
           name: Run tests
-          command: stack --no-terminal test
-      - run:
-          name: Install executable
-          command: stack --no-terminal install
+          command: stack --no-terminal test --coverage
       - save_cache:
           name: Cache Dependencies
           key: v1-{{ checksum "stack.yaml" }}-{{ checksum "package.yaml" }}

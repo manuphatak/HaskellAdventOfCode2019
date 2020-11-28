@@ -25,7 +25,7 @@ source-repository head
 
 library
   exposed-modules:
-      Day01.Day01
+      Day01.Solution
   other-modules:
       Paths_AdventOfCode
   hs-source-dirs:
@@ -38,7 +38,7 @@ test-suite AdventOfCode-test
   type: exitcode-stdio-1.0
   main-is: Spec.hs
   other-modules:
-      Day01Spec
+      Day01.SolutionSpec
       Paths_AdventOfCode
   hs-source-dirs:
       test

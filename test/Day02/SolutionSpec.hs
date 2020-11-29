@@ -11,9 +11,9 @@ spec = do
   it "solves Part 1" $ do
     input <- readFile "./test/Day02/input.txt"
     part1 input `shouldBe` "5305097"
-  xit "solves Part 2" $ do
+  it "solves Part 2" $ do
     input <- readFile "./test/Day02/input.txt"
-    part2 input `shouldBe` "hello santa"
+    part2 input `shouldBe` "4925"
 
   describe "run" runSpec
 

@@ -29,6 +29,7 @@ cp -rv "test/Template" "$new_day_test"
 log "Replacing placeholder values"
 find "$new_day_src" -name "*.hs" -exec sed -i "" "s/Template/Day${D}/g" {} +
 find "$new_day_test" -name "*.hs" -exec sed -i "" "s/Template/Day${D}/g" {} +
+find "$new_day_test" -name "*.hs" -exec sed -i "" "s/ it / xit /g" {} +
 
 
 log "Fetching input.txt"
@@ -38,21 +39,24 @@ log "Fetching input.txt"
 log "Fetching README.md"
 ./bin/readme "$d"
 
+
+log "Update Stack"
+stack setup
+
 if [ -z "$2" ]
 then
   log "Checkout branch"
-  # git checkout -b "day_${D}"
+  git checkout -b "day_${D}"
 
-  # log "Git add"
-  # git add -v "$new_day_src"
-  # git add -v "$new_day_test"
+  log "Git add"
+  git add -v "$new_day_src"
+  git add -v "$new_day_test"
 
-  # log "Git Commit"
-  # git commit -v -m "Setup Day ${D}"
+  log "Git Commit"
+  git commit -v -m "Setup Day ${D}"
 else
   log "Skipping git"
 fi
 
 
-log "Created $new_day_src" "="
-log "Created $new_day_test" "="
+log "Successfully scaffolded Day $D" "="

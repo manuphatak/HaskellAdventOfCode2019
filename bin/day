@@ -3,8 +3,8 @@ set -euo pipefail
 
 d=$1
 D=$(printf "%02d" "$d")
-new_day_src="src/Day${D}"
-new_day_test="test/Day${D}"
+new_day_src="src/Day$D"
+new_day_test="test/Day$D"
 
 function log() {
   local length=${#1}
@@ -27,8 +27,8 @@ cp -rv "test/Template" "$new_day_test"
 
 
 log "Replacing placeholder values"
-find "$new_day_src" -name "*.hs" -exec sed -i "" "s/Template/Day${D}/g" {} +
-find "$new_day_test" -name "*.hs" -exec sed -i "" "s/Template/Day${D}/g" {} +
+find "$new_day_src" -name "*.hs" -exec sed -i "" "s/Template/Day$D/g" {} +
+find "$new_day_test" -name "*.hs" -exec sed -i "" "s/Template/Day$D/g" {} +
 find "$new_day_test" -name "*.hs" -exec sed -i "" "s/ it / xit /g" {} +
 
 
@@ -46,7 +46,8 @@ stack setup
 if [ $# -eq 2 ] && [ "$2" = "commit" ]
 then
   log "Checkout branch"
-  git checkout -b "day_${D}"
+  git checkout -b "day_$D"
+
 
   log "Git add"
   git add -v "$new_day_src"
@@ -54,7 +55,7 @@ then
   gia add -v AdventOfCode.cabal
 
   log "Git Commit"
-  git commit -v -m "Setup Day ${D}"
+  git commit -v -m "Setup Day $D"
 fi
 
 

@@ -4,7 +4,7 @@ cabal-version: 1.12
 --
 -- see: https://github.com/sol/hpack
 --
--- hash: 0bfd227c8f5d59334aaba300b88df1eac550bd65e2e115c92d2f75ed793e342e
+-- hash: 58254f1301f4549b5264ef581d485c064a8a49d57b0273327c1a0efaf22e29d7
 
 name:           AdventOfCode
 version:        0.1.0.0
@@ -39,6 +39,7 @@ library
     , implicit-hie:implicit-hie
   build-depends:
       base >=4.7 && <5
+    , parsec
   default-language: Haskell2010
 
 test-suite AdventOfCode-test
@@ -60,4 +61,5 @@ test-suite AdventOfCode-test
     , base >=4.7 && <5
     , hspec
     , hspec-discover
+    , parsec
   default-language: Haskell2010

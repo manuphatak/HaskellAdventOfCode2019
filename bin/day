@@ -51,6 +51,7 @@ then
   log "Git add"
   git add -v "$new_day_src"
   git add -v "$new_day_test"
+  gia add -v AdventOfCode.cabal
 
   log "Git Commit"
   git commit -v -m "Setup Day ${D}"

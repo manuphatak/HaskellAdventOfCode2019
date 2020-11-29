@@ -9,8 +9,6 @@ jobs:
     working_directory: /app
     steps:
       - checkout
-      - setup_remote_docker:
-          docker_layer_caching: true
       - restore_cache:
           name: Restore cache
           keys:

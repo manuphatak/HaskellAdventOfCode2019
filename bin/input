@@ -7,4 +7,4 @@ D=$(printf "%02d" "$d")
 
 curl --progress-bar \
   "https://adventofcode.com/2019/day/${d}/input" \
-  -H "cookie: session=${SESSION_ID}" > "src/Day${D}/input.txt"
+  -H "cookie: session=${SESSION_ID}" > "test/Day${D}/input.txt"

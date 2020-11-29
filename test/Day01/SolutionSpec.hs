@@ -33,9 +33,8 @@ fuelRequiredForMassSpec =
 
       test :: FuelRequiredCase -> Spec
       test FuelRequiredCase {..} =
-        context ("given a mass of " ++ show mass) $
-          it ("is " ++ show expected) $
-            fuelRequiredForMass mass `shouldBe` expected
+        it ("is " ++ show expected ++ " given a mass of " ++ show mass) $
+          fuelRequiredForMass mass `shouldBe` expected
    in for_ cases test
 
 fuelRequiredForMassAndFuelSpec :: Spec
@@ -50,7 +49,6 @@ fuelRequiredForMassAndFuelSpec =
 
       test :: FuelRequiredCase -> Spec
       test FuelRequiredCase {..} =
-        context ("given a mass of " ++ show mass) $
-          it ("is " ++ show expected) $
-            fuelRequiredForMassAndFuel mass `shouldBe` expected
+        it ("is " ++ show expected ++ " given a mass of " ++ show mass) $
+          fuelRequiredForMassAndFuel mass `shouldBe` expected
    in for_ cases test

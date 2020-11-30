@@ -23,7 +23,7 @@ simulation :: (Int, Int) -> Program -> Int
 simulation (noun, verb) = head . programMemory . run . setVerb verb . setNoun noun
 
 line :: Parser [Int]
-line = number `sepBy` (char ',' *> spaces)
+line = number `sepBy` char ','
   where
     number = read <$> many digit
 

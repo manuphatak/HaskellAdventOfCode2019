@@ -45,13 +45,13 @@ spec = do
      in for_ cases test
   describe "wordParser" $ do
     let input = "i like turtles"
-
-    it ("parses " ++ input) $
-      runMaybe wordParser input `shouldBe` Just "i"
-    it ("parses " ++ input) $
-      runMaybe (wordParser *> wordParser) input `shouldBe` Just ""
-    it ("parses " ++ input) $
-      runMaybe (wordParser *> char ' ' *> wordParser) input `shouldBe` Just "like"
+     in do
+          it ("parses " ++ input) $
+            runMaybe wordParser input `shouldBe` Just "i"
+          it ("parses " ++ input) $
+            runMaybe (wordParser *> wordParser) input `shouldBe` Just ""
+          it ("parses " ++ input) $
+            runMaybe (wordParser *> char ' ' *> wordParser) input `shouldBe` Just "like"
   describe "secondWordParser" $ do
     it "parses hello world" $
       runMaybe secondWordParser "hello world" `shouldBe` Just "world"
@@ -60,11 +60,10 @@ spec = do
       runMaybe twoWordParser "hello world" `shouldBe` Just ["hello", "world"]
   describe "wordsParser" $ do
     let input = "i like turtles"
+     in do
+          it ("parses " ++ input) $
+            runMaybe wordsParser "hello world" `shouldBe` Just ["hello", "world"]
 
-    it ("parses " ++ input) $
-      runMaybe wordsParser "hello world" `shouldBe` Just ["hello", "world"]
-
-  focus $
     describe "Simple Expression Parser" $ do
       describe "numberParser" $ do
         it "parses numbers" $ do

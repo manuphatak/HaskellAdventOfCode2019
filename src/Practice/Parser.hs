@@ -51,7 +51,7 @@ programParser :: Parsec String st TExpression
 programParser = expressionParser <* eof
 
 expressionParser :: Parsec String st TExpression
-expressionParser = skipMany (char ' ') *> expressions <* skipMany (char ' ')
+expressionParser = spaces *> expressions <* spaces
   where
     expressions =
       between (char '(') (char ')') binaryExpressionParser

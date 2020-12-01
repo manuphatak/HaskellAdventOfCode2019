@@ -1,4 +1,4 @@
-module Day02.Solution where
+module Day02.Solution (part1, part2, readProgram, run, showProgram) where
 
 import Data.Either
 import Data.List
@@ -23,7 +23,7 @@ simulation :: (Int, Int) -> Program -> Int
 simulation (noun, verb) = head . programMemory . run . setVerb verb . setNoun noun
 
 line :: Parser [Int]
-line = number `sepBy` (char ',' *> spaces)
+line = number `sepBy` char ','
   where
     number = read <$> many digit
 

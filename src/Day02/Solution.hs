@@ -1,4 +1,4 @@
-module Day02.Solution where
+module Day02.Solution (part1, part2, readProgram, run, showProgram) where
 
 import Data.Either
 import Data.List

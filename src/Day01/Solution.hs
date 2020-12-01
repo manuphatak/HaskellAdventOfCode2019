@@ -1,4 +1,4 @@
-module Day01.Solution where
+module Day01.Solution (fuelRequiredForMass, fuelRequiredForMassAndFuel, part1, part2) where
 
 part1 :: String -> String
 part1 = show . sum . map (fuelRequiredForMass . readInt) . lines

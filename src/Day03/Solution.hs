@@ -1,4 +1,14 @@
-module Day03.Solution where
+module Day03.Solution
+  ( closestIntersection,
+    fastestIntersection,
+    part1,
+    part2,
+    wirePath,
+    Coordinates (..),
+    Direction (..),
+    Instruction (..),
+  )
+where
 
 import Data.Either
 import Data.List
@@ -24,9 +34,6 @@ closestIntersection = minimum . map (manhattanDistance centralPoint) . Map.keys 
 
 fastestIntersection :: [String] -> Distance
 fastestIntersection = minimum . map totalLatency . Map.elems . gridIntersections . asGrid . map (wirePath . readWire)
-
-readWires :: String -> [Wire]
-readWires = map readWire . lines
 
 readWire :: String -> Wire
 readWire input = fromRight ([] :: Wire) $ parse parseWire "" input
@@ -73,18 +80,18 @@ wirePath (z : zs) = go centralPoint z zs
     next D (Coordinates x y) = Coordinates x (pred y)
     next L (Coordinates x y) = Coordinates (pred x) y
 
-addWire :: Int -> Grid -> [Coordinates] -> Grid
-addWire index g cs = foldl' fn g (zip [0 ..] cs)
+addWire :: Int -> [Coordinates] -> Grid -> Grid
+addWire index cs g = foldl' fn g (zip [0 ..] cs)
   where
     fn :: Grid -> (Int, Coordinates) -> Grid
     fn grid (steps, coordinates) = Map.insertWith (++) coordinates [GridWire index steps] grid
 
 asGrid :: [[Coordinates]] -> Grid
-asGrid = go 0 emptyGrid
+asGrid coordinates = go 0 coordinates emptyGrid
   where
-    go :: Int -> Grid -> [[Coordinates]] -> Grid
-    go _ grid [] = grid
-    go index grid (x : xs) = go (succ index) (addWire index grid x) xs
+    go :: Int -> [[Coordinates]] -> Grid -> Grid
+    go _ [] grid = grid
+    go index (x : xs) grid = go (succ index) xs (addWire index x grid)
 
 gridIntersections :: Grid -> Grid
 gridIntersections = Map.filterWithKey (\k _ -> k /= centralPoint) . Map.filter ((> 1) . length . nub)

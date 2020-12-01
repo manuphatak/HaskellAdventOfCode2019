@@ -4,7 +4,7 @@ cabal-version: 1.12
 --
 -- see: https://github.com/sol/hpack
 --
--- hash: 37245f36ce7c475fa59266b49ce9f7b61e9cd24f8b75c9fe94a8e04fefae4dd5
+-- hash: 69a3956969edfb230d8b7e1816135667527f290c8cb9adf50cbddbf16ea26560
 
 name:           AdventOfCode
 version:        0.1.0.0
@@ -30,6 +30,7 @@ library
       Day01.Solution
       Day02.Solution
       Day03.Solution
+      Day04.Solution
       Practice.Parser
       Template.Solution
   other-modules:
@@ -52,6 +53,7 @@ test-suite AdventOfCode-test
       Day01.SolutionSpec
       Day02.SolutionSpec
       Day03.SolutionSpec
+      Day04.SolutionSpec
       Practice.ParserSpec
       Template.SolutionSpec
       Paths_AdventOfCode

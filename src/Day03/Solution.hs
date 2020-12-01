@@ -9,7 +9,7 @@ part1 :: String -> String
 part1 = show . closestIntersection . lines
 
 part2 :: String -> String
-part2 = id
+part2 = show . fastestIntersection . lines
 
 data Direction = U | R | D | L deriving (Read, Show)
 
@@ -20,10 +20,10 @@ data Instruction = Instruction Direction Distance deriving (Show)
 type Wire = [Instruction]
 
 closestIntersection :: [String] -> Distance
-closestIntersection = minimum . map (manhattanDistance centralPoint) . gridIntersections . asGrid . map (wirePath . readWire)
+closestIntersection = minimum . map (manhattanDistance centralPoint) . Map.keys . gridIntersections . asGrid . map (wirePath . readWire)
 
-solve :: [Int] -> Distance
-solve _ = 0
+fastestIntersection :: [String] -> Distance
+fastestIntersection = minimum . map totalLatency . Map.elems . gridIntersections . asGrid . map (wirePath . readWire)
 
 readWires :: String -> [Wire]
 readWires = map readWire . lines
@@ -45,7 +45,12 @@ parseWire = parseInstruction `sepBy` char ','
 
 data Coordinates = Coordinates Int Int deriving (Show, Ord, Eq)
 
-type Grid = Map.Map Coordinates [Int]
+data GridWire = GridWire Int Int deriving (Show)
+
+instance Eq GridWire where
+  (==) (GridWire a _) (GridWire b _) = a == b
+
+type Grid = Map.Map Coordinates [GridWire]
 
 centralPoint :: Coordinates
 centralPoint = Coordinates 0 0
@@ -69,23 +74,25 @@ wirePath (z : zs) = go centralPoint z zs
     next L (Coordinates x y) = Coordinates (pred x) y
 
 addWire :: Int -> Grid -> [Coordinates] -> Grid
-addWire index = foldl' fn
+addWire index g cs = foldl' fn g (zip [0 ..] cs)
   where
-    fn :: Grid -> Coordinates -> Grid
-    fn grid coordinates = Map.insertWith (++) coordinates [index] grid
+    fn :: Grid -> (Int, Coordinates) -> Grid
+    fn grid (steps, coordinates) = Map.insertWith (++) coordinates [GridWire index steps] grid
 
 asGrid :: [[Coordinates]] -> Grid
 asGrid = go 0 emptyGrid
   where
+    go :: Int -> Grid -> [[Coordinates]] -> Grid
     go _ grid [] = grid
     go index grid (x : xs) = go (succ index) (addWire index grid x) xs
 
-gridIntersections :: Grid -> [Coordinates]
-gridIntersections = filter (Coordinates 0 0 /=) . Map.keys . Map.filter ((> 1) . length . nub)
+gridIntersections :: Grid -> Grid
+gridIntersections = Map.filterWithKey (\k _ -> k /= centralPoint) . Map.filter ((> 1) . length . nub)
 
 manhattanDistance :: Coordinates -> Coordinates -> Int
 manhattanDistance (Coordinates ax ay) (Coordinates bx by) = abs (ax - bx) + abs (ay - by)
 
--- >>> input = ["R8,U5,L5,D3", "U7,R6,D4,L4"]
--- >>> map (manhattanDistance centralPoint) . closestIntersection' $ input
--- [6,11]
+totalLatency :: [GridWire] -> Int
+totalLatency = foldl' fn 0
+  where
+    fn acc (GridWire _ steps) = acc + steps

@@ -4,7 +4,7 @@ cabal-version: 1.12
 --
 -- see: https://github.com/sol/hpack
 --
--- hash: c581b68feafd884f9d6060de5d12fd833a808ec48d4aab3a6a1630323d6aa697
+-- hash: 37245f36ce7c475fa59266b49ce9f7b61e9cd24f8b75c9fe94a8e04fefae4dd5
 
 name:           AdventOfCode
 version:        0.1.0.0
@@ -14,7 +14,7 @@ bug-reports:    https://github.com/bionikspoon/HaskellAdventOfCode2019/issues
 author:         Manu Phatak
 maintainer:     bionikspoon@gmail.com
 copyright:      2020 Manu Phatak
-license:        BSD3
+license:        MIT
 license-file:   LICENSE
 build-type:     Simple
 extra-source-files:
@@ -41,6 +41,7 @@ library
     , implicit-hie:implicit-hie
   build-depends:
       base >=4.7 && <5
+    , containers
     , parsec
   default-language: Haskell2010
 
@@ -63,6 +64,7 @@ test-suite AdventOfCode-test
   build-depends:
       AdventOfCode
     , base >=4.7 && <5
+    , containers
     , hspec
     , hspec-discover
     , parsec

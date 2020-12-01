@@ -1,7 +1,7 @@
 name:                AdventOfCode
 version:             0.1.0.0
 github:              "bionikspoon/HaskellAdventOfCode2019"
-license:             BSD3
+license:             MIT
 author:              "Manu Phatak"
 maintainer:          "bionikspoon@gmail.com"
 copyright:           "2020 Manu Phatak"
@@ -22,6 +22,7 @@ description:         Please see the README on GitHub at <https://github.com/bion
 dependencies:
 - base >= 4.7 && < 5
 - parsec
+- containers
 
 library:
   source-dirs: src

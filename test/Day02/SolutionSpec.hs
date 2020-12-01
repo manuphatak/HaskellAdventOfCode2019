@@ -4,6 +4,12 @@ module Day02.SolutionSpec (spec) where
 
 import Data.Foldable (for_)
 import Day02.Solution
+  ( part1,
+    part2,
+    readProgram,
+    run,
+    showProgram,
+  )
 import Test.Hspec
 
 spec :: Spec

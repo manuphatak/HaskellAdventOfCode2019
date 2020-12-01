@@ -10,10 +10,11 @@ module Day03.Solution
   )
 where
 
-import Data.Either
-import Data.List
+import Data.Either (fromRight)
+import Data.List (foldl', nub)
 import qualified Data.Map.Strict as Map
-import Text.Parsec
+import Text.Parsec (Parsec)
+import qualified Text.Parsec as P
 
 part1 :: String -> String
 part1 = show . closestIntersection . lines
@@ -36,19 +37,19 @@ fastestIntersection :: [String] -> Distance
 fastestIntersection = minimum . map totalLatency . Map.elems . gridIntersections . asGrid . map (wirePath . readWire)
 
 readWire :: String -> Wire
-readWire input = fromRight ([] :: Wire) $ parse parseWire "" input
+readWire input = fromRight ([] :: Wire) $ P.parse parseWire "" input
 
 parseInstruction :: Parsec String st Instruction
 parseInstruction = Instruction <$> directionParser <*> distanceParser
   where
     distanceParser :: Parsec String st Distance
-    distanceParser = read <$> many1 digit
+    distanceParser = read <$> P.many1 P.digit
 
     directionParser :: Parsec String st Direction
-    directionParser = read <$> count 1 (oneOf ['U', 'R', 'D', 'L'])
+    directionParser = read <$> P.count 1 (P.oneOf ['U', 'R', 'D', 'L'])
 
 parseWire :: Parsec String st Wire
-parseWire = parseInstruction `sepBy` char ','
+parseWire = parseInstruction `P.sepBy` P.char ','
 
 data Coordinates = Coordinates Int Int deriving (Show, Ord, Eq)
 

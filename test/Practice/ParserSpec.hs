@@ -2,6 +2,20 @@ module Practice.ParserSpec (spec) where
 
 import Data.Foldable (for_)
 import Practice.Parser
+  ( TExpression (..),
+    TOperator (..),
+    charAParser,
+    evaluateExpression,
+    numberParser,
+    operatorParser,
+    programParser,
+    run,
+    secondWordParser,
+    stringParser,
+    twoWordParser,
+    wordParser,
+    wordsParser,
+  )
 import Test.Hspec
 import Text.Parsec (Parsec, anyChar, char, parse)
 

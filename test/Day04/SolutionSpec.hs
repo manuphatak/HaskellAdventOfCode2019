@@ -1,6 +1,6 @@
 module Day04.SolutionSpec (spec) where
 
-import Day04.Solution
+import Day04.Solution (part1, part2)
 import Test.Hspec
 
 spec :: Spec

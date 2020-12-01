@@ -1,6 +1,20 @@
 module Practice.Parser where
 
 import Text.Parsec
+  ( ParseError,
+    Parsec,
+    anyChar,
+    between,
+    char,
+    digit,
+    eof,
+    many,
+    noneOf,
+    oneOf,
+    parse,
+    spaces,
+    (<|>),
+  )
 
 charAParser :: Parsec String st Char
 charAParser = char 'a'

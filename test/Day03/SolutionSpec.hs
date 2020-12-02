@@ -2,6 +2,15 @@ module Day03.SolutionSpec (spec) where
 
 import Data.Foldable (for_)
 import Day03.Solution
+  ( Coordinates (..),
+    Direction (..),
+    Instruction (..),
+    closestIntersection,
+    fastestIntersection,
+    part1,
+    part2,
+    wirePath,
+  )
 import Test.Hspec
 
 spec :: Spec

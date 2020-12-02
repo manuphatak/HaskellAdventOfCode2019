@@ -1,10 +1,10 @@
 module Day02.Solution (part1, part2, readProgram, run, showProgram) where
 
-import Data.Either
-import Data.List
-import Data.Maybe
-import Text.Parsec
-import Text.Parsec.String
+import Data.Either (fromRight)
+import Data.List (find, intercalate)
+import Data.Maybe (fromJust)
+import Text.Parsec (char, digit, many, parse, sepBy)
+import Text.Parsec.String (Parser)
 
 type Memory = [Int]
 

@@ -4,6 +4,11 @@ module Day01.SolutionSpec (spec) where
 
 import Data.Foldable (for_)
 import Day01.Solution
+  ( fuelRequiredForMass,
+    fuelRequiredForMassAndFuel,
+    part1,
+    part2,
+  )
 import Test.Hspec
 
 spec :: Spec

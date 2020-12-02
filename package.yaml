@@ -1,5 +1,5 @@
-name:                AdventOfCode
-version:             0.1.0.0
+name:                AdventOfCode2019
+version:             2.0.1.9
 github:              "bionikspoon/HaskellAdventOfCode2019"
 license:             MIT
 author:              "Manu Phatak"
@@ -28,7 +28,7 @@ library:
   source-dirs: src
 
 tests:
-  AdventOfCode-test:
+  AdventOfCode2019-test:
     main:                Spec.hs
     source-dirs:         test
     ghc-options:
@@ -36,7 +36,7 @@ tests:
     - -rtsopts
     - -with-rtsopts=-N
     dependencies:
-    - AdventOfCode
+    - AdventOfCode2019
     - hspec-discover
     - hspec
 

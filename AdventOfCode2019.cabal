@@ -4,10 +4,10 @@ cabal-version: 1.12
 --
 -- see: https://github.com/sol/hpack
 --
--- hash: 37245f36ce7c475fa59266b49ce9f7b61e9cd24f8b75c9fe94a8e04fefae4dd5
+-- hash: e7d3d84f4fb6453bb2e187b73069b3b7d375c1860d0a7a58285b62af76af991c
 
-name:           AdventOfCode
-version:        0.1.0.0
+name:           AdventOfCode2019
+version:        2.0.1.9
 description:    Please see the README on GitHub at <https://github.com/bionikspoon/HaskellAdventOfCode2019#readme>
 homepage:       https://github.com/bionikspoon/HaskellAdventOfCode2019#readme
 bug-reports:    https://github.com/bionikspoon/HaskellAdventOfCode2019/issues
@@ -30,10 +30,11 @@ library
       Day01.Solution
       Day02.Solution
       Day03.Solution
+      Day04.Solution
       Practice.Parser
       Template.Solution
   other-modules:
-      Paths_AdventOfCode
+      Paths_AdventOfCode2019
   hs-source-dirs:
       src
   build-tool-depends:
@@ -45,16 +46,17 @@ library
     , parsec
   default-language: Haskell2010
 
-test-suite AdventOfCode-test
+test-suite AdventOfCode2019-test
   type: exitcode-stdio-1.0
   main-is: Spec.hs
   other-modules:
       Day01.SolutionSpec
       Day02.SolutionSpec
       Day03.SolutionSpec
+      Day04.SolutionSpec
       Practice.ParserSpec
       Template.SolutionSpec
-      Paths_AdventOfCode
+      Paths_AdventOfCode2019
   hs-source-dirs:
       test
   ghc-options: -threaded -rtsopts -with-rtsopts=-N
@@ -62,7 +64,7 @@ test-suite AdventOfCode-test
       hpc-lcov:hpc-lcov
     , implicit-hie:implicit-hie
   build-depends:
-      AdventOfCode
+      AdventOfCode2019
     , base >=4.7 && <5
     , containers
     , hspec

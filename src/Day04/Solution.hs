@@ -1,4 +1,4 @@
-module Template.Solution (part1, part2) where
+module Day04.Solution (part1, part2) where
 
 part1 :: String -> String
 part1 = id
